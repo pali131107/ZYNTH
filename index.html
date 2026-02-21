@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZYNTH | Secure Web App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1 class="logo">ZYNTH</h1>
+        <div class="login-box">
+            <input type="password" id="userKey" placeholder="Enter Security Key">
+            <button onclick="generateSecureHash()">Secure Login</button>
+        </div>
+        <div id="output"></div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html>
