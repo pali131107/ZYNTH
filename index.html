@@ -3,18 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZYNTH | Secure Web App</title>
-    <link rel="stylesheet" href="style.css">
+    <title>ZYNTH - Secure Access</title>
+    <style>
+        body { background-color: #0d0d0d; color: #00ff41; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .login-container { border: 2px solid #00ff41; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px #00ff41; text-align: center; }
+        h1 { font-size: 2rem; margin-bottom: 20px; letter-spacing: 5px; }
+        input { background: transparent; border: 1px solid #00ff41; color: #00ff41; padding: 10px; width: 250px; text-align: center; outline: none; margin-bottom: 20px; }
+        button { background: #00ff41; color: #000; border: none; padding: 10px 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background: #008f11; color: #fff; }
+        #status { margin-top: 20px; font-weight: bold; }
+    </style>
 </head>
 <body>
-    <div class="app-container">
-        <h1 class="logo">ZYNTH</h1>
-        <div class="login-box">
-            <input type="password" id="userKey" placeholder="Enter Security Key">
-            <button onclick="generateSecureHash()">Secure Login</button>
-        </div>
-        <div id="output"></div>
+
+    <div class="login-container">
+        <h1>ZYNTH</h1>
+        <p>TERMINAL ACCESS REQUIRED</p>
+        <input type="password" id="keyInput" placeholder="ENTER SECURITY KEY">
+        <br>
+        <button onclick="validateLogin()">AUTHENTICATE</button>
+        <div id="status"></div>
     </div>
-    <script src="auth.js"></script>
-</body>
-</html>
+
+    <script>
+        function validateLogin() {
+            const input = document.getElementById('keyInput').value;
+            const status = document.getElementById('status');
+            
+            // Your predefined Security Key: ZYNTH123
+            if (input === "ZYNTH123") {
+                status.style.color = "#00ff41";
+                status.innerText = "ACCESS GRANTED. REDIRECTING...";
+                // After successful login, you can redirect or show content
+                setTimeout(() => {
+                    alert("Welcome to ZYNTH Secure Environment");
+                }, 1000);
+            } else {
+                status.style.color = "#ff0000";
+                status.innerText =
