@@ -3,41 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZYNTH - Secure Access</title>
+    <title>ZYNTH | Video Stream</title>
     <style>
-        body { background-color: #0d0d0d; color: #00ff41; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .login-container { border: 2px solid #00ff41; padding: 30px; border-radius: 10px; box-shadow: 0 0 20px #00ff41; text-align: center; }
-        h1 { font-size: 2rem; margin-bottom: 20px; letter-spacing: 5px; }
-        input { background: transparent; border: 1px solid #00ff41; color: #00ff41; padding: 10px; width: 250px; text-align: center; outline: none; margin-bottom: 20px; }
-        button { background: #00ff41; color: #000; border: none; padding: 10px 25px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        button:hover { background: #008f11; color: #fff; }
-        #status { margin-top: 20px; font-weight: bold; }
+        body { background-color: #111; color: white; font-family: Arial, sans-serif; margin: 0; padding: 20px; text-align: center; }
+        .login-box { margin-top: 100px; border: 1px solid #444; padding: 20px; display: inline-block; }
+        #video-gallery { display: none; }
+        .video-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+        video { width: 100%; border-radius: 8px; border: 2px solid #333; }
+        h1 { color: #ff0000; }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <h1>ZYNTH</h1>
-        <p>TERMINAL ACCESS REQUIRED</p>
-        <input type="password" id="keyInput" placeholder="ENTER SECURITY KEY">
-        <br>
-        <button onclick="validateLogin()">AUTHENTICATE</button>
-        <div id="status"></div>
+    <div id="loginSection" class="login-box">
+        <h1>ZYNTH ACCESS</h1>
+        <input type="password" id="pass" placeholder="Enter Key: ZYNTH123" style="padding:10px; width:200px;">
+        <button onclick="checkAccess()" style="padding:10px 20px; cursor:pointer;">ENTER</button>
+    </div>
+
+    <div id="video-gallery">
+        <h1>ZYNTH VIDEO STREAM</h1>
+        <div class="video-container">
+            <video controls>
+                <source src="your_video_link_1.mp4" type="video/mp4">
+            </video>
+            <video controls>
+                <source src="your_video_link_2.mp4" type="video/mp4">
+            </video>
+        </div>
+        <button onclick="location.reload()" style="margin-top:20px; padding:10px;">LOGOUT</button>
     </div>
 
     <script>
-        function validateLogin() {
-            const input = document.getElementById('keyInput').value;
-            const status = document.getElementById('status');
-            
-            // Your predefined Security Key: ZYNTH123
-            if (input === "ZYNTH123") {
-                status.style.color = "#00ff41";
-                status.innerText = "ACCESS GRANTED. REDIRECTING...";
-                // After successful login, you can redirect or show content
-                setTimeout(() => {
-                    alert("Welcome to ZYNTH Secure Environment");
-                }, 1000);
+        function checkAccess() {
+            var input = document.getElementById("pass").value;
+            if(input === "ZYNTH123") {
+                document.getElementById("loginSection").style.display = "none";
+                document.getElementById("video-gallery").style.display = "block";
             } else {
-                status.style.color = "#ff0000";
-                status.innerText =
+                alert("Invalid Key!");
+            }
+        }
+    </script>
+</body>
+</html>
+
